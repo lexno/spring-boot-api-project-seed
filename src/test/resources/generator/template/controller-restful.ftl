@@ -33,28 +33,28 @@ public class ${modelNameUpperCamel}ControllerRestful {
         return ResultGenerator.genSuccessResult();
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     @RequiresAuthentication
     public Result delete(@RequestParam Long id) {
         ${modelNameLowerCamel}Service.deleteById(id);
         return ResultGenerator.genSuccessResult();
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     @RequiresAuthentication
-    public Result update(${modelNameUpperCamel} ${modelNameLowerCamel}) {
+    public Result update(@RequestBody ${modelNameUpperCamel} ${modelNameLowerCamel}) {
         ${modelNameLowerCamel}Service.update(${modelNameLowerCamel});
         return ResultGenerator.genSuccessResult();
     }
 
-    @PostMapping("/detail")
+    @GetMapping("/{id}")
     @RequiresAuthentication
-    public Result detail(@RequestParam Long id) {
+    public Result detail(@PathVariable Long id) {
         ${modelNameUpperCamel} ${modelNameLowerCamel} = ${modelNameLowerCamel}Service.findById(id);
         return ResultGenerator.genSuccessResult(${modelNameLowerCamel});
     }
 
-    @PostMapping("/list")
+    @GetMapping("/list")
     @RequiresAuthentication
     public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
         PageHelper.startPage(page, size);
