@@ -29,7 +29,6 @@ public class ${modelNameUpperCamel}Controller {
 
     @PostMapping("/add")
     @ResponseBody
-    @RequiresAuthentication
     public Result add(${modelNameUpperCamel} ${modelNameLowerCamel}) {
         ${modelNameLowerCamel}Service.save(${modelNameLowerCamel});
         return ResultGenerator.genSuccessResult();
@@ -37,7 +36,6 @@ public class ${modelNameUpperCamel}Controller {
 
     @PostMapping("/delete")
     @ResponseBody
-    @RequiresAuthentication
     public Result delete(@RequestParam Long id) {
         ${modelNameLowerCamel}Service.deleteById(id);
         return ResultGenerator.genSuccessResult();
@@ -45,7 +43,6 @@ public class ${modelNameUpperCamel}Controller {
 
     @PostMapping("/update")
     @ResponseBody
-    @RequiresAuthentication
     public Result update(${modelNameUpperCamel} ${modelNameLowerCamel}) {
         ${modelNameLowerCamel}Service.update(${modelNameLowerCamel});
         return ResultGenerator.genSuccessResult();
@@ -53,7 +50,6 @@ public class ${modelNameUpperCamel}Controller {
 
     @PostMapping("/detail")
     @ResponseBody
-    @RequiresAuthentication
     public Result detail(@RequestParam Long id) {
         ${modelNameUpperCamel} ${modelNameLowerCamel} = ${modelNameLowerCamel}Service.findById(id);
         return ResultGenerator.genSuccessResult(${modelNameLowerCamel});
@@ -61,7 +57,6 @@ public class ${modelNameUpperCamel}Controller {
 
     @PostMapping("/list")
     @ResponseBody
-    @RequiresAuthentication
     public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
         PageHelper.startPage(page, size);
         List<${modelNameUpperCamel}> list = ${modelNameLowerCamel}Service.findAll();
